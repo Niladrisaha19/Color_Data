@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from sklearn.cluster import KMeans
 from flask_cors import CORS
+import os
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -53,4 +54,5 @@ def upload_image():
     return jsonify({'plot': plot_data})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+
